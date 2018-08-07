@@ -5,7 +5,6 @@
 //  Copyright © 2016 gliechtenstein. All rights reserved.
 //
 #import "Jason.h"
-#import "JasonAppDelegate.h"
 #import "NSData+ImageContentType.h"
 #import "UIImage+GIF.h"
 @interface Jason(){
@@ -103,7 +102,7 @@
      * (ex) [[Jason client] start] from JasonAppDelegate
      *
      **************************************************/
-    JasonAppDelegate *app = (JasonAppDelegate *)[[UIApplication sharedApplication] delegate];
+    UIApplication *app = [[UIApplication sharedApplication] delegate];
     NSDictionary *plist = [self getSettings];
     ROOT_URL = plist[@"url"];
     INITIAL_LOADING = [plist[@"loading"] boolValue];
@@ -113,11 +112,11 @@
         launch = [JasonHelper read_local_json:launch_url];
     }
     // FLEX DEBUGGER
-#if DEBUG
-    if(plist[@"debug"] && [plist[@"debug"] boolValue]){
-        [[FLEXManager sharedManager] showExplorer];
-    }
-#endif
+//#if DEBUG
+//    if(plist[@"debug"] && [plist[@"debug"] boolValue]){
+//        [[FLEXManager sharedManager] showExplorer];
+//    }
+//#endif
     
     JasonViewController *vc = [[JasonViewController alloc] init];
     if(href){
@@ -156,10 +155,13 @@
     
     [tab setDelegate:self];
     
-    app.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    app.window.rootViewController = tab;
-    
-    [app.window makeKeyAndVisible];
+    UIWindow *window = [app valueForKey:@"window"];
+    if (window) {
+        window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        window.rootViewController = tab;
+        
+        [window makeKeyAndVisible];
+    }
 }
 - (void)call: (NSDictionary *)action{
     /**************************************************

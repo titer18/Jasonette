@@ -12,6 +12,7 @@
 #import <AHKActionSheet/AHKActionSheet.h>
 #import <RMDateSelectionViewController/RMDateSelectionViewController.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-@import APAddressBook;
+//@import APAddressBook;
+#import "APAddressBook.h"
 @interface JasonUtilAction : JasonAction
 @end

@@ -1,7 +1,7 @@
-#use_frameworks!
+platform:ios, '10.0'
 
 target 'Jasonette' do
-  pod 'Jasonette', :path => '../'
-  pod 'SWTableViewCell', :git => "https://github.com/gliechtenstein/SWTableViewCell.git"
-
+    #use_frameworks!
+    inhibit_all_warnings!
+    pod 'Jasonette', :path => '../'
 end

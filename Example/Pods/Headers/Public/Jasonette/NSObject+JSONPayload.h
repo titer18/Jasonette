@@ -1,0 +1,1 @@
+../../../../../JasonetteKit/Classes/NSObject+JSONPayload.h

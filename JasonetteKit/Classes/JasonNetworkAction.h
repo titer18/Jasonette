@@ -9,7 +9,7 @@
 #import "JasonParser.h"
 #import <AFNetworking/AFNetworking.h>
 #import "JASONResponseSerializer.h"
-@import TWMessageBarManager;
+#import "TWMessageBarManager.h"
 
 @interface JasonNetworkAction : JasonAction
 @end

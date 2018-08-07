@@ -170,7 +170,7 @@
                 NSLog(@"Javascript log: %@",message);
             };
 
-
+    
             [context evaluateScript:js];
             JSValue *parse = context[@"ST"][@"transform"];
             JSValue *val = [parse callWithArguments:@[parser, data]];

@@ -11,9 +11,12 @@
 		5E3176611D1E400C00D87778 /* JasonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3176601D1E400C00D87778 /* JasonAppDelegate.m */; };
 		5E3177481D1E411F00D87778 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3176C01D1E411E00D87778 /* LaunchScreen.storyboard */; };
 		5E3177781D1E414C00D87778 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3177771D1E414C00D87778 /* Media.xcassets */; };
+		ED918CFD7BFC0C405ED0CC2D /* libPods-Jasonette.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D00D8B4EF87222F69EC69C0 /* libPods-Jasonette.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DC1D6687EB02AC79793E3F1 /* Pods-Jasonette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasonette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasonette/Pods-Jasonette.debug.xcconfig"; sourceTree = "<group>"; };
+		3D00D8B4EF87222F69EC69C0 /* libPods-Jasonette.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jasonette.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3176591D1E400C00D87778 /* Jasonette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasonette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E31765D1D1E400C00D87778 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5E31765F1D1E400C00D87778 /* JasonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JasonAppDelegate.h; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		5E3176C01D1E411E00D87778 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E3177771D1E414C00D87778 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5EE85B7A1DA595A20049EACE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ED9A9F13050AD1ED1AC881D8 /* Pods-Jasonette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasonette.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasonette/Pods-Jasonette.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,12 +33,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED918CFD7BFC0C405ED0CC2D /* libPods-Jasonette.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0976C24CF3F1ACB1EF902CF8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1D6687EB02AC79793E3F1 /* Pods-Jasonette.debug.xcconfig */,
+				ED9A9F13050AD1ED1AC881D8 /* Pods-Jasonette.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5E0956291DA3112C007ADC78 /* Launcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +75,7 @@
 				5E31765B1D1E400C00D87778 /* Jasonette */,
 				5E31765A1D1E400C00D87778 /* Products */,
 				7CC63D0148253F040E828E0E /* Frameworks */,
+				0976C24CF3F1ACB1EF902CF8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				5EE85B7A1DA595A20049EACE /* UIKit.framework */,
+				3D00D8B4EF87222F69EC69C0 /* libPods-Jasonette.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E3176701D1E400C00D87778 /* Build configuration list for PBXNativeTarget "Jasonette" */;
 			buildPhases = (
+				35A28C55D45491B03507EDCD /* [CP] Check Pods Manifest.lock */,
 				5E3176551D1E400C00D87778 /* Sources */,
 				5E3176561D1E400C00D87778 /* Frameworks */,
 				5E3176571D1E400C00D87778 /* Resources */,
+				4911CC708779C8BE1CF2477B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,6 +182,95 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35A28C55D45491B03507EDCD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Jasonette-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4911CC708779C8BE1CF2477B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Jasonette/Pods-Jasonette-resources.sh",
+				"${PODS_ROOT}/IQAudioRecorderController/IQAudioRecorderController/Resources/IQAudioRecorderController.bundle",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/agent.js",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/csv.js",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/error.json",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/icon-error.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/icon-error@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/icon-info.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/icon-info@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/icon-success.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/icon-success@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/JasonHorizontalSection.xib",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/JasonHorizontalSectionItem.xib",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/JasonVerticalSectionItem.xib",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/LaunchScreen.storyboard",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/more@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/Next@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/placeholder@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/placeholderr@2x.png",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/preload.json",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/rss.js",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/settings.plist",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/st.js",
+				"${PODS_ROOT}/../../JasonetteKit/Resources/xhtml.js",
+				"${PODS_ROOT}/TWMessageBarManager/Classes/Icons/icon-error.png",
+				"${PODS_ROOT}/TWMessageBarManager/Classes/Icons/icon-error@2x.png",
+				"${PODS_ROOT}/TWMessageBarManager/Classes/Icons/icon-info.png",
+				"${PODS_ROOT}/TWMessageBarManager/Classes/Icons/icon-info@2x.png",
+				"${PODS_ROOT}/TWMessageBarManager/Classes/Icons/icon-success.png",
+				"${PODS_ROOT}/TWMessageBarManager/Classes/Icons/icon-success@2x.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQAudioRecorderController.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/agent.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/csv.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/error.json",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon-error.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon-error@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon-info.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon-info@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon-success.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon-success@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JasonHorizontalSection.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JasonHorizontalSectionItem.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JasonVerticalSectionItem.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LaunchScreen.storyboardc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/more@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Next@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/placeholder@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/placeholderr@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/preload.json",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/rss.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/settings.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/st.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/xhtml.js",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jasonette/Pods-Jasonette-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5E3176551D1E400C00D87778 /* Sources */ = {
@@ -284,6 +391,7 @@
 		};
 		5E3176711D1E400C00D87778 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DC1D6687EB02AC79793E3F1 /* Pods-Jasonette.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
@@ -295,15 +403,18 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Jasonette/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "86A7B9E3-8EB6-4CD8-B7F9-2B2CC671EA8F.seed.jasonette.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		5E3176721D1E400C00D87778 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED9A9F13050AD1ED1AC881D8 /* Pods-Jasonette.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
@@ -315,9 +426,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Jasonette/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "86A7B9E3-8EB6-4CD8-B7F9-2B2CC671EA8F.seed.jasonette.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

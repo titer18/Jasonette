@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFOAuth2Manager.h"
 #import "AFHTTPRequestSerializer+OAuth2.h"
-@import AHKActionSheet;
+#import "AHKActionSheet.h"
 
 @interface JasonOauthAction : JasonAction <SFSafariViewControllerDelegate>
 @end

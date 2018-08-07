@@ -1,0 +1,126 @@
+{
+  "name": "Jasonette",
+  "version": "0.4.0",
+  "summary": "Jasonette 的 pod 集成方式.",
+  "description": "Jasonette pod, 让JasonetteKit 集成更简单.",
+  "homepage": "https://github.com/titer18/Jasonette",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "titer": "zhaohong1991@hotmail.com"
+  },
+  "platforms": {
+    "ios": "9.3"
+  },
+  "source": {
+    "git": "https://github.com/titer18/Jasonette.git",
+    "tag": "0.4.0"
+  },
+  "source_files": "JasonetteKit/Classes/**/*.{h,m}",
+  "public_header_files": "JasonetteKit/Classes/**/*.h",
+  "resources": "JasonetteKit/Resources/**",
+  "frameworks": [
+    "MapKit",
+    "UIKit"
+  ],
+  "dependencies": {
+    "UICKeyChainStore": [
+
+    ],
+    "TWMessageBarManager": [
+
+    ],
+    "AFNetworking": [
+
+    ],
+    "APAddressBook": [
+
+    ],
+    "TTTAttributedLabel": [
+
+    ],
+    "BBBadgeBarButtonItem": [
+
+    ],
+    "IQAudioRecorderController": [
+
+    ],
+    "REMenu": [
+
+    ],
+    "JDStatusBarNotification": [
+
+    ],
+    "HMSegmentedControl": [
+
+    ],
+    "SWFrameButton": [
+
+    ],
+    "libPhoneNumber-iOS": [
+
+    ],
+    "NSGIF": [
+      "~> 1.0"
+    ],
+    "INTULocationManager": [
+
+    ],
+    "AHKActionSheet": [
+
+    ],
+    "TDOAuth": [
+
+    ],
+    "AFOAuth2Manager": [
+
+    ],
+    "CYRTextView": [
+
+    ],
+    "SZTextView": [
+
+    ],
+    "SBJson": [
+      "~> 4.0.2"
+    ],
+    "DHSmartScreenshot": [
+
+    ],
+    "NSHash": [
+
+    ],
+    "JSCoreBom": [
+      "~> 1.1.1"
+    ],
+    "RMDateSelectionViewController": [
+
+    ],
+    "DTCoreText": [
+
+    ],
+    "PHFComposeBarView": [
+
+    ],
+    "DAKeyboardControl": [
+
+    ],
+    "MBProgressHUD": [
+      "~> 1.0"
+    ],
+    "SocketRocket": [
+
+    ],
+    "FreeStreamer": [
+
+    ],
+    "SDWebImage": [
+      "~> 3.8.1"
+    ],
+    "SWTableViewCell": [
+      "~> 0.3.7"
+    ]
+  }
+}
