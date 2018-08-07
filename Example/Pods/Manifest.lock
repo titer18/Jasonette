@@ -173,7 +173,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
   INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
   IQAudioRecorderController: 69a67c2e0b87bd8746cbb4de175fd7a0bf820009
-  Jasonette: 74ab2eeeaff5be9c87bfa2e4e653e343a455431e
+  Jasonette: 9fab4ca5da4edc9af7f6584f8d028d54c4941f26
   JDStatusBarNotification: d5829a8f2f291b23b8a54b87fac8bf2549945a2f
   JSCoreBom: 712590b897ecd74d9fa9cb0f16857491411c932b
   libPhoneNumber-iOS: e444379ac18bbfbdefad571da735b2cd7e096caa
@@ -199,6 +199,6 @@ SPEC CHECKSUMS:
   TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
 
-PODFILE CHECKSUM: aaad9c350b7b8741454b40fea6abef24893ec923
+PODFILE CHECKSUM: 7b79c7334d0e2b494b0abf3ca739ebac539f201b
 
 COCOAPODS: 1.5.3

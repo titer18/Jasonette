@@ -4,10 +4,7 @@
   "summary": "Jasonette 的 pod 集成方式.",
   "description": "Jasonette pod, 让JasonetteKit 集成更简单.",
   "homepage": "https://github.com/titer18/Jasonette",
-  "license": {
-    "type": "MIT",
-    "file": "LICENSE"
-  },
+  "license": "MIT",
   "authors": {
     "titer": "zhaohong1991@hotmail.com"
   },
