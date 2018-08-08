@@ -1508,7 +1508,7 @@
 - (void)flush{
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     [[SDImageCache sharedImageCache]clearMemory];
-    [[SDImageCache sharedImageCache]clearDisk];
+    [[SDImageCache sharedImageCache]clearDiskOnCompletion:nil];
     [self success];
 }
 - (void)kill{
@@ -2172,8 +2172,8 @@
             NSData *data = [[NSFileManager defaultManager] contentsAtPath:filePath];
             
             // Check for animated GIF
-            NSString *imageContentType = [NSData sd_contentTypeForImageData:data];
-            if ([imageContentType isEqualToString:@"image/gif"]) {
+            SDImageFormat imageContentType = [NSData sd_imageFormatForImageData:data];
+            if (imageContentType == SDImageFormatGIF) {
                 localImage = [UIImage sd_animatedGIFWithData:data];
             } else {
                 localImage = [UIImage imageNamed:localImageName];
@@ -2410,17 +2410,14 @@
                     [self setMenuButtonImage:localImage forButton:btn withMenu:left_menu];
                 } else{
                     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                    [manager downloadImageWithURL:[NSURL URLWithString:image_src]
-                                          options:0
-                                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                         }
-                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                            if (image) {
-                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                    [self setMenuButtonImage:image forButton:btn withMenu:left_menu];//
-                                                });
-                                            }
-                                        }];
+                    [manager loadImageWithURL:[NSURL URLWithString:image_src] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                        if (image) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self setMenuButtonImage:image forButton:btn withMenu:left_menu];//
+                            });
+                        }
+                    }];
                 }
                 
             } else {
@@ -2473,17 +2470,14 @@
                     [self setMenuButtonImage:localImage forButton:btn withMenu:right_menu];
                 } else{
                     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                    [manager downloadImageWithURL:[NSURL URLWithString:image_src]
-                                          options:0
-                                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                         }
-                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                            if (image) {
-                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                    [self setMenuButtonImage:image forButton:btn withMenu:right_menu];
-                                                });
-                                            }
-                                        }];
+                    [manager loadImageWithURL:[NSURL URLWithString:image_src] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                        if (image) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self setMenuButtonImage:image forButton:btn withMenu:right_menu];
+                            });
+                        }
+                    }];
                 }
             } else {
                 [btn setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
@@ -2523,17 +2517,14 @@
                             } else{
                                 
                                 SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                                [manager downloadImageWithURL:[NSURL URLWithString:url]
-                                                      options:0
-                                                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                     }
-                                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                                        if (image) {
-                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                                [self setLogoImage:image withStyle:style forVC:v];
-                                                            });
-                                                        }
-                                                    }];
+                                [manager loadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                                } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                                    if (image) {
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [self setLogoImage:image withStyle:style forVC:v];
+                                        });
+                                    }
+                                }];
                             }
                         }
                         
@@ -2994,16 +2985,12 @@
             UIImage *i = [UIImage imageNamed:[image substringFromIndex:7]];
             [self setTabImage:i withTab:tab andItem:item];
         } else{
-            [manager downloadImageWithURL:[NSURL URLWithString:image]
-                                  options:0
-                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                 }
-                                completed:^(UIImage *i, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                    if (i) {
-                                        [self setTabImage:i withTab:tab andItem:item];
-                                    }
-                                }];
-            
+            [manager loadImageWithURL:[NSURL URLWithString:image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+            } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                if (image) {
+                    [self setTabImage:image withTab:tab andItem:item];
+                }
+            }];
         }
         
     } else {

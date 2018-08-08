@@ -7,6 +7,7 @@
 #import "JasonImageComponent.h"
 #import "NSData+ImageContentType.h"
 #import "UIImage+GIF.h"
+#import "UIView+WebCache.h"
 
 @implementation JasonImageComponent
 + (UIView *)build: (UIImageView *)component withJSON: (NSDictionary *)json withOptions: (NSDictionary *)options{
@@ -40,8 +41,8 @@
     }
     
     if(![url containsString:@"{{"] && ![url containsString:@"}}"]){
-        [component setIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [component setShowActivityIndicatorView:YES];
+        [component sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [component sd_setShowActivityIndicatorView:YES];
         
         if([url containsString:@"file://"]){
             NSString *localImageName = [url substringFromIndex:7];
@@ -52,8 +53,8 @@
             NSData *data = [[NSFileManager defaultManager] contentsAtPath:filePath];
             
             // Check for animated GIF
-            NSString *imageContentType = [NSData sd_contentTypeForImageData:data];
-            if ([imageContentType isEqualToString:@"image/gif"]) {
+            SDImageFormat imageContentType = [NSData sd_imageFormatForImageData:data];
+            if (imageContentType == SDImageFormatGIF) {
                 localImage = [UIImage sd_animatedGIFWithData:data];
             } else {
                 localImage = [UIImage imageNamed:localImageName];

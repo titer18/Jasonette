@@ -1011,14 +1011,15 @@
                                             [manager.imageDownloader setValue:body[@"header"][key] forHTTPHeaderField:key];
                                         }
                                     }
-                                    [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) { } completed:^(UIImage *i, NSData *data, NSError *error, BOOL finished) {
+                                    [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                                    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
                                         download_image_counter--;
                                         if(!error){
-                                            JasonComponentFactory.imageLoaded[url] = [NSValue valueWithCGSize:i.size];
+                                            JasonComponentFactory.imageLoaded[url] = [NSValue valueWithCGSize:image.size];
                                         }
                                         //[self.tableView visibleCells];
                                         dispatch_async(dispatch_get_main_queue(), ^{
-
+                                            
                                             NSArray *indexPathArray = weakSelf.tableView.indexPathsForVisibleRows;
                                             NSMutableSet *visibleIndexPaths = [[NSMutableSet alloc] initWithArray: indexPathArray];
                                             [visibleIndexPaths intersectSet:(NSSet *)indexPathsForImage[url]];
@@ -1030,7 +1031,7 @@
                                                     [weakSelf scrollToBottom];
                                                 }
                                             }
-                                       });
+                                        });
                                     }];
                                 }
                             }
@@ -1561,25 +1562,19 @@
                     } else {
                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                             SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                            [manager downloadImageWithURL:[NSURL URLWithString:chat_input[@"left"][@"image"]]
-                                                  options:0
-                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                     // progression tracking code
-                                                 }
-                                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                                    
-                                                    // colorize
-                                                    if(chat_input[@"left"][@"style"] && chat_input[@"left"][@"style"][@"color"]){
-                                                        UIColor *newColor = [JasonHelper colorwithHexString:chat_input[@"left"][@"style"][@"color"] alpha:1.0];
-                                                        image = [JasonHelper colorize:image into:newColor];
-                                                    }
-                                                    
-                                                    UIImage *resizedImage = [JasonHelper scaleImage:image ToSize:CGSizeMake(30,30)];
-                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                        [self.composeBarView setUtilityButtonImage:resizedImage];
-                                                    });
-                                                }
-                             ];
+                            [manager loadImageWithURL:[NSURL URLWithString:chat_input[@"left"][@"image"]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                            } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                                // colorize
+                                if(chat_input[@"left"][@"style"] && chat_input[@"left"][@"style"][@"color"]){
+                                    UIColor *newColor = [JasonHelper colorwithHexString:chat_input[@"left"][@"style"][@"color"] alpha:1.0];
+                                    image = [JasonHelper colorize:image into:newColor];
+                                }
+                                
+                                UIImage *resizedImage = [JasonHelper scaleImage:image ToSize:CGSizeMake(30,30)];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self.composeBarView setUtilityButtonImage:resizedImage];
+                                });
+                            }];
                         });
                         
                     }

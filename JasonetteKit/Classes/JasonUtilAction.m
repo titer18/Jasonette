@@ -5,6 +5,7 @@
 //  Copyright © 2016 gliechtenstein. All rights reserved.
 //
 #import "JasonUtilAction.h"
+#import "APContact.h"
 
 @implementation JasonUtilAction
 - (void)banner{
@@ -146,17 +147,14 @@
                     NSString *file_url = item[@"file_url"];
                     if(url){
                         SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                        [manager downloadImageWithURL:[NSURL URLWithString:url]
-                                              options:0
-                                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                             }
-                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                                if (image) {
-                                                    [share_items addObject:image];
-                                                }
-                                                counter--;
-                                                if(counter == 0) [self openShareWith:share_items];
-                                            }];
+                        [manager loadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                            if (image) {
+                                [share_items addObject:image];
+                            }
+                            counter--;
+                            if(counter == 0) [self openShareWith:share_items];
+                        }];
                     } else if(file_url){
                         [share_items addObject:file_url];
                         counter--;

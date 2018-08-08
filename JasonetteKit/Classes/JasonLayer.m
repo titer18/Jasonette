@@ -41,8 +41,8 @@ static NSMutableDictionary *_stylesheet = nil;
                     NSData *data = [[NSFileManager defaultManager] contentsAtPath:filePath];
                     
                     // Check for animated GIF
-                    NSString *imageContentType = [NSData sd_contentTypeForImageData:data];
-                    if ([imageContentType isEqualToString:@"image/gif"]) {
+                    SDImageFormat imageContentType = [NSData sd_imageFormatForImageData:data];
+                    if (imageContentType == SDImageFormatGIF) {
                         localImage = [UIImage sd_animatedGIFWithData:data];
                     } else {
                         localImage = [UIImage imageNamed:localImageName];

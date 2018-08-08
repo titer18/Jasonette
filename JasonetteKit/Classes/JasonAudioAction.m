@@ -195,21 +195,16 @@
                     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songInfo];
                 } else {
                     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                    [manager downloadImageWithURL:[NSURL URLWithString:image_url]
-                                          options:0
-                                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                             // progression tracking code
-                                         }
-                                        completed:^(UIImage *i, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                            MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage: i];
-                                            [songInfo setObject:title forKey:MPMediaItemPropertyTitle];
-                                            [songInfo setObject:author forKey:MPMediaItemPropertyArtist];
-                                            [songInfo setObject:album forKey:MPMediaItemPropertyAlbumTitle];
-                                            [songInfo setObject:albumArt forKey:MPMediaItemPropertyArtwork];
-                                            [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songInfo];
-                                        }];
-                    
-                    
+                    [manager loadImageWithURL:[NSURL URLWithString:image_url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                        // progression tracking code
+                    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                        MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage: image];
+                        [songInfo setObject:title forKey:MPMediaItemPropertyTitle];
+                        [songInfo setObject:author forKey:MPMediaItemPropertyArtist];
+                        [songInfo setObject:album forKey:MPMediaItemPropertyAlbumTitle];
+                        [songInfo setObject:albumArt forKey:MPMediaItemPropertyArtwork];
+                        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songInfo];
+                    }];
                 }
             }
             self.VC.audios[url] = audioStream;
